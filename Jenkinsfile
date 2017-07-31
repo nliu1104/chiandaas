@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    dockerfile {
+      filename 'DockerFile'
+    }
+    
+  }
   stages {
     stage('package') {
       steps {
@@ -8,7 +13,7 @@ pipeline {
     }
     stage('mvn') {
       steps {
-        sh 'sh "mvn clean"'
+        sh 'mvn clean'
       }
     }
   }
